@@ -1,0 +1,76 @@
+* {
+	margin:0 auto;
+	box-sizing: border-box;
+}
+
+.container {
+	border: solid black 1px;
+	padding:2em;
+	margin:2em;
+
+}
+
+/* .main {
+	width:1480px;
+	height:440px;
+	background: #bac8ff;
+	margin:2em;
+
+}
+*/
+
+
+
+img {
+	width:1480px;
+	height:440px;
+	background: #bac8ff;
+	margin:2em;
+	position: relative;
+}
+
+.mail {
+	text-align: center;
+	margin:1em;
+	font-size: 18px;
+	
+}
+
+.mail label {
+	
+	font-size: 20px;
+}
+.mail, footer, .boton{
+	font-family: 'Ubuntu', sans-serif;
+}
+
+
+form {
+	display: inline-block;
+}
+
+.boton {
+	vertical-align: center;
+	display: inline;
+	text-align: center;
+	margin:1em;
+	font-size: 20px;
+
+}
+
+footer {
+	text-align: center;
+	margin-bottom: 2em;
+}
+
+h1 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: lighter; 
+	color: blue;
+	font-size: 70px;
+	text-align: center;
+	/* vertical-align: center;
+	padding-top:12%; */
+	position:relative;
+	top: 180px;
+}
