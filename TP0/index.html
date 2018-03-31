@@ -2,45 +2,71 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>ComingSoon</title>
-	<link rel="stylesheet" href="css/estilos.css">
-	
+	<title>comingSoon</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">	
 	<style>
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400|Ubuntu');
-</style>
+	@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,600');
+	</style>
+	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 	
-	<div class="container">
+	<div class="main">
+
 		<header>
-			<img class="logo" src="imgs/logo.jpg" alt="">
+
+			<img class="logo" src="img/logo.png" alt="">
+
 		</header>
-
-		<section class="main">
-			<h1>COMING SOON</h1>
-			<div class="main_img">
-				<img src="imgs/fondo.jpg" alt="">
-			</div>
-		</section>
-
-		<section class="mail">
-			<form action="dejarMail">
-				<label for="email">Dejanos tu email:</label>
-				<input type="text" name="DejanosTuMail" placeholder="">
-			</form>
-			<input class="boton" type="submit" value="Aceptar">
-		</section>
 		
+		<section class="banner">
+
+			<h1>COMING SOON</h1>
+			
+			<div class="banner-img">
+				<img src="img/banner.jpg" alt="">
+			</div>
+
+			<div class="banner-mobile">
+				<img src="img/banner-mob.jpg" alt="">
+			</div>
+
+		</section>
+	
+
+		<section class="form">
+			
+			<form action="">
+				
+				<label for="email">Email</label>
+				<input type="text" id="email" name="Escribe tu email" placeholder="Dejanos tu email">
+
+			</form>
+
+			<div class="boton">
+				<input type="submit" value="Aceptar">
+			</div>
+
+		</section>
+
 		<footer>
 			<div class="redes">
-				<img src="imgs/facebook.png" alt="">
-				<img src="imgs/twitter.png" alt="">
-				<img src="imgs/instagram.png" alt="">
+				<a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
+				<a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+				<a href="https://twitter.com"><i class="fab fa-twitter-square"></i></a>
+			</div>
+			<div class="derechos">
+				<p>©Todos los derechos reservados</p>
 			</div>
 
-			<p>Todos los derechos reservados</p>
-		</footer>	
+		</footer>
+
 	</div>
-	
+
+	<script src="js/fontawesome-all.min.js"></script>
 </body>
 </html>
+
+
+
+
