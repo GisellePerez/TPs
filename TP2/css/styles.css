@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main{
+    margin-top: 2em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+.left{
+    background: beige;
+    width: 25%;
+    margin: 0.6em;
+    border-radius:5px;
+    padding:1em;
+}
+
+.fila{
+    display: flex;
+    justify-content: center;    
+}
+.ficha{
+    background: url(../img/dorso.png);
+    background-size: 100%;
+    width: 150px;
+    height: 150px;
+    margin: 0.6em;
+    border-radius:5px;
+}
+
+.frente{
+    background: url(../img/adaLovelace.jpg);
+    background-size: 100%;
+}
+
+.dorso{
+    background: url(../img/dorso.png);
+    background-size: 100%;
+}
+
+/*
+.uno{
+    background:firebrick;
+    background-size: 100%;
+}
+
+.dos{
+    background-color: teal;
+    background-size: 100%;
+}
+
+.tres{
+    background-color: #ffa8a8;
+    background-size: 100%;
+}
+
+.cuatro {
+    background-color: #c0eb75;
+}
+
+.cinco {
+    background-color:#ffe066;
+}
+
+.seis {
+    background-color: gray;
+}
+*/
