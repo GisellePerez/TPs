@@ -60,16 +60,12 @@ h1{
     opacity:1;
 }
 
-.matched{
-    opacity:1;
-}
-
 .background{
     background: url(../img/dorso.png);
     background-size: 100%;
 }
 
-.noClick{
-    opacity:0;
+.noPointer{
+    pointer-events: none;
 }
 
