@@ -22,6 +22,7 @@ var aciertos=0;
 var puntosIntentos;
 var cont=0;
 var selected=[];
+var bandera=false; 
 
 
 var pair = [];
@@ -100,7 +101,7 @@ function flip(firstClick, lastClick){
 
 function victory(){
     if(aciertos==6){
-        alert('VICTORY!');
+        setTimeout(function(){ alert('VICTORY!');}, 400);        
     }
 }
 
@@ -110,7 +111,7 @@ function victory(){
 
 function gameOver(){
     if(intentos==0){
-        alert('GAME OVER!');
+        setTimeout(function(){ alert('GAME OVER!');}, 400);        
     }
 }
 
@@ -119,66 +120,69 @@ function gameOver(){
 */
 
 $('.ficha').on('click', function(){
+    if (cont < 2){     
+        $(this).children().first().toggleClass('visible hidden'); //me trae la imagen y no el div y cambia la clase
+        console.log($(this).children().first()); //consolea la img (hija del div)
+               
+        if(firstClick == null){
+            firstClick= $(this).children().first();
+            console.log('first: '+firstClick);
+            selected.push(firstClick);
+            firstClick.parent().addClass('noPointer'); // para que no permita un segundo click sobre el elemento
+                   
+        }else{
+            var lastClick= $(this).children().first();
+            console.log('last: '+lastClick);
+            selected.push(lastClick);
+            lastClick.parent().addClass('noPointer'); // para que no permita un segundo click sobre el elemento
 
-    if(cont < 2){
-        cont++;
-        
-            $(this).children().first().toggleClass('visible hidden'); //me trae la imagen y no el div y cambia la clase
-            console.log($(this).children().first()); //consolea la img (hija del div)
-        
-            if(firstClick == null){
-                firstClick= $(this).children().first();
-                console.log('first: '+firstClick);
-                selected.push(firstClick);
-                firstClick.parent().addClass('noPointer'); // para que no permita un segundo click sobre el elemento
+            console.log(firstClick.parent());                     
+            console.log('selected: '+selected);         
+                 
+                if(firstClick.attr('src') == lastClick.attr('src')//&& selected[0].parent().attr('id') != selected[1].parent().attr('id')
+                    && firstClick.parent().attr('id') != lastClick.parent().attr('id')){
 
-            }else{
-                var lastClick= $(this).children().first();
-                console.log('last: '+lastClick);
-                selected.push(lastClick);
-                lastClick.parent().addClass('noPointer'); // para que no permita un segundo click sobre el elemento
+                    console.log("MATCH! :D");                            
+                    console.log('sel: '+selected.length);
                             
-                console.log(firstClick.parent()); 
-                
-                console.log('selected: '+selected);  
-                
-                
+                    aciertos++;
+                    console.log('aciertos: '+aciertos); 
+                        
+                    firstClick= null;
+                    lastClick= null;                                           
 
-                    if(firstClick.attr('src') == lastClick.attr('src')//&& selected[0].parent().attr('id') != selected[1].parent().attr('id')
-                        && firstClick.parent().attr('id') != lastClick.parent().attr('id')){
+                }else{
 
-                        console.log("MATCH! :D");
-                        selected.splice(0,1);
-                        selected=[];
-                        aciertos++;
-                        console.log('aciertos: '+aciertos); 
-                    
-                        firstClick= null;
-                        lastClick= null; 
-                            
-                    
-                    }else{
-                        firstClick.parent().addClass('background');
-                        firstClick.parent().removeClass('noPointer'); // para poder clickear de nuevo
-                        lastClick.parent().removeClass('noPointer'); // para poder clickear de nuevo
+                    firstClick.parent().addClass('background');
+                    firstClick.parent().removeClass('noPointer'); // para poder clickear de nuevo
+                    lastClick.parent().removeClass('noPointer'); // para poder clickear de nuevo
 
-                        selected=[];
-                        setTimeout(flip, 1200, firstClick, lastClick);
-                        intentos--;
-                        console.log('intentos: '+intentos);
-                       
-                    }
-                firstClick= null;
-                lastClick= null;
-            }
-        
-    }   
-    victory();
-    gameOver();
+                    //selected=[];
+                    //selected.splice(0,1);
+                    console.log('sel: '+selected.length);
+
+                    setTimeout(flip, 800, firstClick, lastClick);
+                    intentos--;
+                    console.log('intentos: '+intentos);
+                    selected.splice(0,1);
+                }
+    
+            firstClick= null;
+            lastClick= null;
+            selected=[];                    
+        }
+        cont++; //Acá cuenta bien
+        console.log('contadorIf: '+cont);
+        victory();
+        gameOver();                    
+    }
+    if(cont == 2){
+        setTimeout(function(){ cont=0; console.log('contadorElse: '+cont);}, 1000); 
+        //con tiempo porque sino vuelve a 0 antes de que las teclas se den vuelta 
+    }
 });
 
 $('#btnRestart').on('click', function(){
-    console.log('hola');
     intentos=24;
     console.log(intentos);
     aciertos=0;
