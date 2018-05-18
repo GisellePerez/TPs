@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Memotest</title>
+    <style>@import url('https://fonts.googleapis.com/css?family=Chewy|Sniglet');</style>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -14,16 +15,12 @@
             <div class="nameDiv"></div> 
             <div class="instrucciones">
                 <h3>Instrucciones:</h3>
-                <p>1. Haz click en una ficha</p>
-                <p>2. Busca su compañera</p>
-                <p>3. Forma todos los pares en la menor cantidad de intentos</p>
-                <p>4. A disfrutar del juego!</p>                
+                <p class="instr">1. Haz click en una ficha</p>
+                <p class="instr">2. Busca su compañera</p>
+                <p class="instr">3. Forma todos los pares en la menor cantidad de intentos</p>
+                <p class="instr">4. A disfrutar del juego!</p>                
             </div>  
-            <div id="infoJuego"></div> 
-            <div class="btnDiv">
-                <input type="button" id="btnRestart" value="Reiniciar">
-                <!-- <input type="button" id="btnReset" value="btnReset"> -->            
-            </div>
+            <div id="infoJuego"><p id="infoJuegoP"></p></div> 
         </aside>
         <section class="right">
             <div class="fila">
@@ -47,7 +44,7 @@
         </section>
 
         <script src="js/jquery.js"></script>
-        <script src="js/index4.js"></script>
+        <script src="js/index.js"></script>
         
     </div>
 </body>

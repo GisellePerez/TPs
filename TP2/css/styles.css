@@ -3,41 +3,59 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    background-color: bisque ;
+}
 .main{
     margin-top: 2em;
     text-align: center;
     display: flex;
     justify-content: center;
-
 }
-
 .left{
-    background: beige;
+    background: rgb(247, 251, 253);
     width: 25%;
     margin: 0.6em;
     border-radius:5px;
     padding:1em;
+    box-shadow: darkgray 1px 1px 2px;
 }
-
 #p{
     display: none;
 }
-
 h1{
-    margin: 1em;
+    margin:0.3em;
+    font-family:'Chewy';
+    font-size: 42px;
+    color: #9D2689; 
 }
-
+.person, h3, .instr{
+    font-family:'Sniglet';
+    color: #EB4B0F ; 
+}
+h3{
+    font-size: 20px;
+    margin-bottom: 0.3em;
+}
+.person{
+    font-size:30px;
+}
 .instrucciones{    
     margin:2em 1em;
     width: 90%;
 }
-
 .instrucciones p{
-    margin:1em 0;
+    margin:0.2em;
     width: 90%;
     text-align: left;
+    font-size: 20px;
 }
-
+#infoJuegoP{
+    font-family:'Sniglet';
+    font-size: 27px;
+    color: #9D2689;
+    margin-top: 1.6em;
+}
 .fila{
     display: flex;
     justify-content: center;    
@@ -51,21 +69,144 @@ h1{
     border-radius:5px;
     box-shadow: darkgray 1px 1px 2px;
 }
-
+.ficha img{
+    border-radius:5px;
+}
 .hidden{
     opacity:0;
 }
-
 .visible{
     opacity:1;
 }
-
 .background{
-    background: url(../img/dorso.png);
+    background: url(../img/dorso2.jpg);
     background-size: 100%;
 }
-
 .noPointer{
     pointer-events: none;
 }
 
+/*   MEDIA QUERIES    */
+
+@media (max-width: 800px){
+    body{
+        width:100%;
+    }
+
+    .main{
+        width: 100%;
+        margin: 0;
+    }
+
+    .left{
+        width: 97%;      
+    }
+
+    .right{
+        width: 100%;
+        margin-left:0.3em;
+    }
+
+    .fila{
+        width:100%;
+    }
+
+    .ficha{
+        width: 104px;
+        height: 104px;
+        margin: 0.4em;
+    }
+    .ficha img{
+        border-radius:5px;
+        width: 105px;
+        height: 105px;
+    }
+
+    h1{
+        font-size: 35px;
+        margin:0em;
+    }
+
+    .person{
+        font-size:22px;
+    }
+
+    .instrucciones{
+        margin:0.6em 1em;
+    }
+
+    .instrucciones h3{
+        font-size:18px;
+    }
+    
+    .instrucciones p{
+        font-size:16px;
+
+    }
+
+    #infoJuegoP{
+        margin-top: 0.6em;
+        font-size:24px;
+    }
+}
+
+
+@media (max-width: 500px){
+
+    .main{
+        flex-direction: column;
+    }
+
+    .ficha{
+        width: 102px;
+        height: 102px;
+    }
+    .ficha img{
+        border-radius:5px;
+        width: 102px;
+        height: 102px;
+    }
+
+    h1{
+        font-size: 60px;
+        margin:0em;
+    }
+
+    .person{
+        font-size:30px;
+    }
+
+    .instrucciones{
+        margin:0 2em;
+    }
+
+    #infoJuegoP{
+        margin-top: 0.4em;
+    }
+}
+
+@media(max-width: 350px){
+
+    .main{
+        margin-left:0.2em;
+    }
+    .right{
+        width: 93%;
+        margin-left:0.2em;
+    }
+    h1{
+        font-size: 50px;
+    }
+    .left{
+        width: 90%;      
+    }
+    .ficha{
+        width: 60px;
+        height: 60px;
+    }
+    .ficha img{
+        border-radius:3px;
+        width: 60px;
+        height: 60px;
+    }
+}
