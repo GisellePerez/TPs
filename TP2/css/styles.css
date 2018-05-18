@@ -19,54 +19,57 @@
     padding:1em;
 }
 
+#p{
+    display: none;
+}
+
+h1{
+    margin: 1em;
+}
+
+.instrucciones{    
+    margin:2em 1em;
+    width: 90%;
+}
+
+.instrucciones p{
+    margin:1em 0;
+    width: 90%;
+    text-align: left;
+}
+
 .fila{
     display: flex;
     justify-content: center;    
 }
 .ficha{
-    background: url(../img/dorso.png);
+    /*background: url(../img/dorso.png);*/
     background-size: 100%;
     width: 150px;
     height: 150px;
     margin: 0.6em;
     border-radius:5px;
+    box-shadow: darkgray 1px 1px 2px;
 }
 
-.frente{
-    background: url(../img/adaLovelace.jpg);
-    background-size: 100%;
+.hidden{
+    opacity:0;
 }
 
-.dorso{
+.visible{
+    opacity:1;
+}
+
+.matched{
+    opacity:1;
+}
+
+.background{
     background: url(../img/dorso.png);
     background-size: 100%;
 }
 
-/*
-.uno{
-    background:firebrick;
-    background-size: 100%;
+.noClick{
+    opacity:0;
 }
 
-.dos{
-    background-color: teal;
-    background-size: 100%;
-}
-
-.tres{
-    background-color: #ffa8a8;
-    background-size: 100%;
-}
-
-.cuatro {
-    background-color: #c0eb75;
-}
-
-.cinco {
-    background-color:#ffe066;
-}
-
-.seis {
-    background-color: gray;
-}
-*/
