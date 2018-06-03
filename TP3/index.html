@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Memotest</title>
+    <style>@import url('https://fonts.googleapis.com/css?family=Chewy|Sniglet');</style>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+</head>
+<body>
+    <div class="main">
+        <aside class="left">
+            <h1>¡Memotest Ada!</h1>
+            <div id="nameDiv"></div> 
+            <div id="levelDiv">
+                <p>
+                    Selecciona un nivel
+                    <input id="spinner" value="0" readonly /><br />
+                    <span id="spinner-val">0</span> <!-- uso esto para tomar el value porque el del input no lo encuentra -->
+                </p>
+                <div id="lvlButtonDiv">
+                    <input type="button" id="getlvl" value="¡Jugar!">
+                </div>
+            </div>
+            <div class="instrucciones">
+                <h3>Instrucciones:</h3>
+                <p class="instr">1. Haz click en una ficha</p>
+                <p class="instr">2. Busca su compañera</p>
+                <p class="instr">3. Forma todos los pares en la menor cantidad de intentos</p>
+                <p class="instr">4. A disfrutar del juego!</p>               
+            </div>  
+            <div id="infoJuego"><p id="infoJuegoP"></p></div> 
+        </aside>
+        <section class="right">
+            <div class="fila">
+                <div class="ficha background" id="ficha1" data-par="1"></div>
+                <div class="ficha background" id="ficha2" data-par="2"></div>
+                <div class="ficha background" id="ficha3" data-par="3"></div>
+                <div class="ficha background" id="ficha4" data-par="4"></div>
+            </div>
+            <div class="fila">
+                <div class="ficha background" id="ficha5" data-par="1"></div>
+                <div class="ficha background" id="ficha6" data-par="2"></div>
+                <div class="ficha background" id="ficha7" data-par="3"></div>
+                <div class="ficha background" id="ficha8" data-par="4"></div>
+            </div>
+            <div class="fila">    
+                <div class="ficha background" id="ficha9" data-par="5"></div>
+                <div class="ficha background" id="ficha10" data-par="6"></div>
+                <div class="ficha background" id="ficha11" data-par="5"></div>
+                <div class="ficha background" id="ficha12" data-par="6"></div>
+            </div>
+        </section>
+
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/index.js"></script>
+        
+    </div>
+</body>
+</html>

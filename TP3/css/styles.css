@@ -1,0 +1,186 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: bisque ;
+}
+.main{
+    margin: 0 auto;
+    padding-top: 2em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+.left{
+    background: rgb(247, 251, 253);
+    width: 35%;
+    margin: 0.6em;
+    border-radius:5px;
+    padding:1em;
+    box-shadow: darkgray 1px 1px 2px;
+}
+#p{
+    display: none;
+}
+h1{
+    margin:0.3em;
+    font-family:'Chewy';
+    font-size: 42px;
+    color: #9D2689; 
+}
+.person, h3, .instr{
+    font-family:'Sniglet';
+    color: #EB4B0F ; 
+}
+h3{
+    font-size: 20px;
+    margin-bottom: 0.3em;
+}
+.person{
+    font-size:30px;
+}
+#spinner-val{
+    display: none;
+}
+.instrucciones{    
+    margin:2em 1em;
+    width: 90%;
+}
+.instrucciones p{
+    margin:0.2em;
+    width: 90%;
+    text-align: left;
+    font-size: 20px;
+}
+#infoJuegoP{
+    font-family:'Sniglet';
+    font-size: 27px;
+    color: #9D2689;
+    margin-top: 1.6em;
+}
+.right{
+    width:75%;
+}
+.fila{
+    display: flex;
+    justify-content: center;    
+}
+.ficha{
+    /*background: url(../img/dorso.png);*/
+    background-size: 100%;
+    width: 25%;
+    height: 25%;
+    margin: 0.6em;
+    border-radius:5px;
+    box-shadow: darkgray 1px 1px 2px;
+}
+.ficha img{
+    border-radius:5px;
+    width: 100%;
+    height: 100%;
+    z-index:1;
+}
+.hidden{
+    opacity:0;
+}
+.visible{
+    opacity:1;
+}
+.background{
+    background: url(../img/dorso2.jpg);
+    background-size: 100%;
+    z-index:2;
+}
+.noPointer{
+    pointer-events: none;
+}
+
+/*   MEDIA QUERIES    */
+
+@media (max-width: 800px){
+    body{
+        width:100%;
+    }
+
+    .main{
+        width: 100%;
+        margin: 0;
+    }
+
+    .left{
+        width: 100%;      
+    }
+
+    .right{
+        width: 100%;
+    }
+
+    .fila{
+        width:100%;
+    }
+
+
+    h1{
+        font-size: 35px;
+        margin:0em;
+    }
+
+    .person{
+        font-size:22px;
+    }
+
+    .instrucciones{
+        margin:0.6em 1em;
+    }
+
+    .instrucciones h3{
+        font-size:18px;
+    }
+    
+    .instrucciones p{
+        font-size:16px;
+
+    }
+
+    #infoJuegoP{
+        margin-top: 0.6em;
+        font-size:24px;
+    }
+}
+
+
+@media (max-width: 500px){
+
+    .main{
+        flex-direction: column;
+    }
+
+
+    h1{
+        font-size: 60px;
+        margin:0em;
+    }
+
+    .person{
+        font-size:30px;
+    }
+
+    .instrucciones{
+        margin:0 2em;
+    }
+
+    #infoJuegoP{
+        margin-top: 0.4em;
+    }
+}
+
+@media(max-width: 350px){
+
+    h1{
+        font-size: 50px;
+    }
+
+}
