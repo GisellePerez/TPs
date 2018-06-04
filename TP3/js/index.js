@@ -3,28 +3,25 @@
 */
 
 var fichas = [
-    {'par':'1', 'img':'img/A.jpg'},
-    {'par':'2', 'img':'img/B.jpg'},
-    {'par':'3', 'img':'img/C.jpg'},
-    {'par':'4', 'img':'img/D.jpg'},
-    {'par':'5', 'img':'img/E.jpg'},
-    {'par':'6', 'img':'img/F.jpg'},
-    {'par':'1', 'img':'img/A.jpg'},
-    {'par':'2', 'img':'img/B.jpg'},
-    {'par':'3', 'img':'img/C.jpg'},
-    {'par':'4', 'img':'img/D.jpg'},
-    {'par':'5', 'img':'img/E.jpg'},
-    {'par':'6', 'img':'img/F.jpg'}
-];
+    {'par':'1', 'img':'img/A.jpg'},{'par':'2', 'img':'img/B.jpg'},{'par':'3', 'img':'img/C.jpg'},
+    {'par':'4', 'img':'img/D.jpg'},{'par':'5', 'img':'img/E.jpg'},{'par':'6', 'img':'img/F.jpg'},
+    {'par':'1', 'img':'img/A.jpg'},{'par':'2', 'img':'img/B.jpg'},{'par':'3', 'img':'img/C.jpg'},
+    {'par':'4', 'img':'img/D.jpg'},{'par':'5', 'img':'img/E.jpg'},{'par':'6', 'img':'img/F.jpg'}];
 
 var arrayLevels =['Fácil','Intermedio','Experto'];
-
 var firstClick= null;
 var intentos;
 var aciertos=0;
-var puntosIntentos;
 var cont=0;
 var selected=[];
+var puntaje=0;
+
+var playerName; /*usada en función playerName*/
+var playerInfo = {};
+var players = [];
+var datosGuardados = localStorage.getItem('players');
+
+
 
 
 /*
@@ -36,12 +33,14 @@ function playerName(){
     let name = prompt('Ingresa tu nombre', '');
 
     if (name != null) {
-        let welcomePerson = `<p class="person">Bienvenida/o ${name}!</p>`;
+        let welcomePerson = `<p class="person">Bienvenida/o <span id = "playerName">${name}</span>!</p>`;
         div.append(welcomePerson);        
     }else{
         let welcome = `<p class="person">Bienvenida/o!</p>`;
         div.append(welcome);
     }
+    playerName = $('#playerName').text(); 
+    console.log(playerName);
 }
 
 /*
@@ -97,26 +96,16 @@ $('#getlvl').on('click', function() {
     console.log( $('#spinner-val').text() );
     let level = ( $('#spinner-val').text() );
 
-    switch(level) {
-        
-        case '0' /*fácil*/:  intentos = 18;
-            break;
-        
-        case '1' /*Intermedio*/: intentos = 12;
-            break;
-        
-        case '2' /*Experto*/: intentos=8;
-            break;
-        
+    switch(level) {        
+        case '0' /*fácil*/: intentos = 18; break;        
+        case '1' /*Intermedio*/: intentos = 12; break;        
+        case '2' /*Experto*/: intentos = 8; break;        
         default: 'No level';
     }
-
-    console.log(intentos); //ahora pasarlo al append
+    //console.log(intentos); //ahora pasarlo al append
     displayMoves(intentos);
-    return intentos;
-    
+    return intentos;    
 });
-
 
 /*
 *   Funcion que carga los intentos
@@ -125,8 +114,19 @@ $('#getlvl').on('click', function() {
 
 function displayMoves(intentos){
     let div = $('#infoJuego');
-    let p = $('#infoJuegoP').text('Intentos: '+ intentos);
+    let p = $('#intentosP').text('Intentos: '+ intentos);
     div.append(p);
+}
+
+/*
+*   Funcion que carga el puntaje
+*   @ params | puntaje
+*/
+
+function displayScore(puntaje) {
+    let div = $('#infoJuego');
+    let = scoreP = $('#scoreP').text('Puntaje: '+ puntaje);
+    div.append(scoreP);
 }
 
 /*
@@ -182,6 +182,7 @@ function victory(){
     if(aciertos==6){
         setTimeout(function(){ alert('VICTORY!');}, 400);        
     }
+    
 }
 
 /*
@@ -191,8 +192,45 @@ function victory(){
 function gameOver(){
     if(intentos==0){
         setTimeout(function(){ alert('GAME OVER!');}, 400); 
-        //refresh la pagina para jugar de nuevo       
+        //refresh la pagina para jugar de nuevo               
     }
+}
+
+function savePlayerData(){
+    playerInfo = {name: playerName, score: puntaje}
+    console.log(playerInfo);
+
+    if(datosGuardados==null){
+        players = [];
+    }else{
+        players = JSON.parse(datosGuardados).players; 
+    }
+    console.log(datosGuardados);
+    players.push(playerInfo);
+
+    let jsonPlayerInfo = {'players':players,'total':players.length}
+    console.log(jsonPlayerInfo);
+
+    let data = JSON.stringify(jsonPlayerInfo);
+    
+    localStorage.setItem('players',data);
+
+    console.log(players);
+
+}
+
+function displayRanking() {
+    $( function() {
+        $( "#dialogRanking" ).dialog();
+        for(var i=0; i<players.length; i++){
+            let playerNameList = players[i].name;
+            let playerScoreList = players[i].score;
+
+            $( "#dialogRanking" ).append(playerNameList);
+            $( "#dialogRanking" ).append(playerScoreList);
+        }
+        
+      } );
 }
 
 /*
@@ -227,9 +265,9 @@ $('.ficha').on('click', function(){
                             
                     aciertos++;
                     console.log('aciertos: '+aciertos); 
-                        
                     firstClick= null;
-                    lastClick= null;                                           
+                    lastClick= null;                  
+                    puntaje = puntaje += 100;
 
                 }else{
 
@@ -239,25 +277,35 @@ $('.ficha').on('click', function(){
 
                     setTimeout(flip, 800, firstClick, lastClick);
                     intentos--;
-                    console.log('intentos: '+intentos);
-
+                    console.log('intentos: '+intentos);                    
+                    if (puntaje != 0){ //para que no tenga valores negativos
+                        puntaje = puntaje -= 20;
+                    }
                     displayMoves(intentos);
                 }
     
             firstClick= null;
             lastClick= null;
-            selected=[];                    
+            selected=[];                   
         }
         cont++; //Acá cuenta bien
         console.log('contadorIf: '+cont);
+        console.log('puntaje :'+puntaje); //ACAAAAAAA funciona
+        displayScore(puntaje);
+        savePlayerData();
         victory();
-        gameOver();                    
+        gameOver(); 
+        
+              
     }
     if(cont == 2){
         setTimeout(function(){ cont=0; console.log('contadorElse: '+cont);}, 800); 
         //con tiempo porque sino vuelve a 0 antes de que las teclas se den vuelta 
     }
+     
 });
+
+
 
 /*
 *   Llamada a funciones
@@ -265,9 +313,9 @@ $('.ficha').on('click', function(){
 
 shuffle();
 playerName();
+displayScore(puntaje); //para que aparezca (en cero) antes de comenzar los intentos.
 
-
-
+//localStorage.clear();
 
 
 
