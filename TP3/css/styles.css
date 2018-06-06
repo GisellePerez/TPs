@@ -11,10 +11,16 @@ body{
     width: 100%;
     height: 100%;
     background-color: aliceblue;
-    z-index: 3; /*si lo dejo en 2 me aparecen las fichas*/
+    z-index: 2; /*si lo dejo en 2 me aparecen las fichas*/
     position: absolute;
     text-align: center;
-    /*min-height:100vh;*/
+}
+
+#welcomeInfo{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .main{
     margin: 0 auto;
@@ -91,8 +97,7 @@ h3{
 .ficha img{
     border-radius:5px;
     width: 100%;
-    height: 100%;
-    z-index:1; /*///////////////////ARREGLAR PORQUE POR AHORA NO FUNCIONA///////////////////*/ 
+    height: 100%; 
 }
 .hidden{
     opacity:0;
@@ -103,7 +108,6 @@ h3{
 .background{
     background: url(../img/dorso2.jpg);
     background-size: 100%;
-    z-index:2;/*////////////////ARREGLAR PORQUE POR AHORA NO FUNCIONA///////////////////////////*/
 }
 .noPointer{
     pointer-events: none;
@@ -112,11 +116,11 @@ h3{
 .displayRanking{
     display: block;
     position: absolute;
-    width: 300px;
-    z-index: 15;
+    width: 50%;
+    z-index: 3;
     top: 50%;
     left: 50%;
-    margin: -100px 0 0 -150px;
+    transform: translate(-50%, -50%);
     background: aliceblue;
 }
 .noDisplayRanking{

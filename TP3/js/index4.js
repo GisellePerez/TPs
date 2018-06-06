@@ -156,8 +156,7 @@ function victory(){
     let victoryP = `<p class="rankingTitle"> Victory! </p>`;
     if(aciertos==6){
         won=true; //bandera
-        setTimeout(function(){ $('#rankingDiv').removeClass('noDisplayRanking'); $('#rankingDiv').addClass('displayRanking');      
-        $('.ficha').addClass('noPointer');$('#rankingDiv').append(victoryP); }, 400);         
+        setTimeout(function(){ $('#rankingTitleDiv').append(victoryP); displayRanking(); }, 500);         
     }
 }
 
@@ -169,8 +168,7 @@ function gameOver(){
     let gameOverP = `<p class="rankingTitle"> Game over </p>`;
     if(intentos==0 && lost == false /*si no pongo el booleano funciona en todos los clicks*/){
         lost=true; //bandera  
-        setTimeout(function(){ $('#rankingDiv').removeClass('noDisplayRanking'); $('#rankingDiv').addClass('displayRanking');
-        $('.ficha').addClass('noPointer'); $('#rankingDiv').append(gameOverP); }, 400);              
+        setTimeout(function(){ $('#rankingTitleDiv').append(gameOverP); displayRanking(); }, 500);              
     }
 }
 
@@ -185,9 +183,9 @@ function savePlayerData() {
     let datosGuardados = localStorage.getItem("players");
 
     if (datosGuardados == null) {
-      players = [];
+        players = [];
     } else {
-      players = JSON.parse(datosGuardados).players;
+        players = JSON.parse(datosGuardados).players;
     }
   
     let data = { name: playerName, score: puntajeFinal }; //desordenado
@@ -195,8 +193,6 @@ function savePlayerData() {
     sortedPlayers = players.sort((a, b) => b.score - a.score); //ordena de mayor a menor puntaje
 
     jsonPlayerInfo = { players: sortedPlayers, total: sortedPlayers.length }; //ordenado :D
-    console.log('info ordenada: '+sortedPlayers);
-        
     let jsonPlayer = JSON.stringify(jsonPlayerInfo);
     localStorage.setItem("players", jsonPlayer);
 } 
@@ -207,20 +203,22 @@ function savePlayerData() {
 
 function showPlayerData() {
     let datosGuardadosParse = JSON.parse(localStorage.getItem("players"));
-    let rankingDiv = $('#rankingDiv');
+    let rankingInfoDiv = $('#rankingInfoDiv');
 
     for (var i = 0; i < datosGuardadosParse.players.length; i++) {
         let li = `<li><p class="rankingNames">${datosGuardadosParse.players[i].name}</p> 
                     <p class="rankingScores">${datosGuardadosParse.players[i].score}</p></li>`
         console.log(li)        
-        rankingDiv.append(li);
+        rankingInfoDiv.append(li);
         //cambiar el display del div pop up y organizar la info
     }
 }
 
-/*function displayRanking(){
-    $('#rankingDiv').addClass('displayRanking');
-}*/
+function displayRanking(){
+    $('#rankingDiv').removeClass('noDisplayRanking'); 
+    $('#rankingDiv').addClass('displayRanking'); 
+    $('.ficha').addClass('noPointer');
+}
     
 /*
 *   Listeners
@@ -237,7 +235,8 @@ $('#jugar').on('click', function(){
         default: 'No level';
     }
     getPlayerName();
-    displayMoves(intentos);  
+    displayMoves(intentos);
+      
 });
 
 $('.ficha').on('click', function(){
@@ -248,8 +247,7 @@ $('.ficha').on('click', function(){
             firstClick= $(this).children().first();
             console.log('first: '+firstClick);
             firstClick.parent().addClass('noPointer'); // para que no permita un segundo click sobre el elemento
-            $(firstClick).effect( "pulsate", {times:2}, "slow"); /* EFECTO */
-                
+            $(firstClick).effect( "pulsate", {times:2}, "slow"); /* EFECTO */   
                    
         }else{
             var lastClick= $(this).children().first();
@@ -298,6 +296,10 @@ $('.ficha').on('click', function(){
         savePlayerData();  
         showPlayerData();        
     }
+});
+
+$('#restart').on('click', function(){
+        window.location.reload();
 });
   
 /*

@@ -11,16 +11,18 @@
 </head>
 <body>
     <div id="welcomeDiv">
-        <input type="text" id="playerNameInput" placeholder="Ingresa tu nombre">
-        <div id="levelDiv">
-            <p id="levelSpinner">
-                <label>Selecciona un nivel</label>
-                <input id="spinner" value="0" readonly /><br />
-                <span id="spinner-val">0</span> <!-- uso esto para tomar el value porque el del input no lo encuentra -->
-            </p>                               
-        </div>
-        <div id="lvlButtonDiv">
-            <input type="button" id="jugar" value="¡Jugar!">
+        <div id="welcomeInfo">
+            <input type="text" id="playerNameInput" placeholder="Ingresa tu nombre">
+            <div id="levelDiv">
+                <p id="levelSpinner">
+                    <label>Selecciona un nivel</label>
+                    <input id="spinner" value="0" readonly /><br />
+                    <span id="spinner-val">0</span> <!-- uso esto para tomar el value porque el del input no lo encuentra -->
+                </p>                               
+            </div>
+            <div id="lvlButtonDiv">
+                <input type="button" id="jugar" value="¡Jugar!">
+            </div>
         </div>
     </div>         
     <div class="main">
@@ -57,7 +59,11 @@
             </div>
         </section>
     </div>
-    <div id="rankingDiv" class="noDisplayRanking"></div>
+    <div id="rankingDiv" class="noDisplayRanking"> 
+        <div id="rankingTitleDiv"></div> 
+        <div id="rankingInfoDiv"></div> 
+        <div id="restartButtonDiv"><button id="restart">Reiniciar</button></div>        
+    </div>
 
     <script src="js/jquery.js"></script>
     <script src="js/jquery-ui.js"></script>
