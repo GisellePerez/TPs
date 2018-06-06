@@ -46,7 +46,8 @@ function getPlayerName(){
         let welcomePerson = `<p class="person">Bienvenida/o <span id = "playerName">${playerName}</span>!</p>`;
         div.append(welcomePerson);
     }else{
-        let welcome = `<p class="person">Bienvenida/o!</p>`;
+        playerName = 'Anon';
+        let welcome = `<p class="person">Bienvenida/o! <span id = "playerName">${playerName}</span></p>`;
         div.append(welcome);
     }
 }
@@ -175,12 +176,12 @@ function savePlayerData() {
 function showPlayerData() {
     let datosGuardadosParse = JSON.parse(localStorage.getItem("players"));
     let rankingInfoDiv = $('#rankingInfoDiv');
+    //let ul = $("<ul></ul>").addClass('rankingUl');
 
     for (var i = 0; i < datosGuardadosParse.players.length; i++) {
-        let li = `<li><p class="rankingNames">${datosGuardadosParse.players[i].name}</p> 
-                    <p class="rankingScores">${datosGuardadosParse.players[i].score}</p></li>`
-        console.log(li)        
-        rankingInfoDiv.append(li);
+        let div = `<div><p class="rankingNames">${datosGuardadosParse.players[i].name}</p> 
+                    <p class="rankingScores">${datosGuardadosParse.players[i].score}</p></div>`        
+        rankingInfoDiv.append(div);
         //cambiar el display del div pop up y organizar la info
     }
 }
@@ -196,19 +197,25 @@ function displayRanking(){
 */
 
 $('#jugar').on('click', function(){
-    $('#welcomeDiv').hide();
-    //let level = ( $('#spinner-val').text() );
-    let level = ($("#lvlSelect option:selected").val()); //también funciona con .text()
 
-    switch(level) {
-        case 'Fácil': intentos = 18; break;        
-        case 'Intermedio': intentos = 12; break;        
-        case 'Experto': intentos = 8; break;        
-        default: 'No level';        
-    }
-    getPlayerName();
-    displayMoves(intentos);
-    displayScore(puntaje);      
+    if($('#lvlSelect').children().first().val() == -1){ //pensar ua mejor condicion
+
+        console.log('elegir nivel');
+
+        $('#welcomeDiv').hide();
+        //let level = ( $('#spinner-val').text() );
+        let level = ($("#lvlSelect option:selected").val()); //también funciona con .text()
+
+        switch(level) {
+            case 'Fácil': intentos = 18; break;        
+            case 'Intermedio': intentos = 12; break;        
+            case 'Experto': intentos = 8; break;        
+            default: 'No level';        
+        }
+        getPlayerName();
+        displayMoves(intentos);
+        displayScore(puntaje); 
+    }     
 });
 
 $('.ficha').on('click', function(){

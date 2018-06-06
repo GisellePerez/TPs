@@ -6,23 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Memotest</title>
     <style>@import url('https://fonts.googleapis.com/css?family=Chewy|Sniglet');</style>
-    <link rel="stylesheet" href="css/styles.css">
+    <style>@import url('https://fonts.googleapis.com/css?family=Tajawal:200,300,400,500,700,800,900');</style>
     <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div id="welcomeDiv">
+    <div id="welcomeDiv">        
         <div id="welcomeInfo">
+            <p id="welcomp">¡Memotest Ada!</p>
             <input type="text" id="playerNameInput" placeholder="Ingresa tu nombre">
             <div id="levelDiv">
-                <select name="levels" id="lvlSelect"></select>
-               <!-- <p id="levelSpinner">
-                    <label>Selecciona un nivel</label>
-                    <input id="spinner" value="0" readonly /><br />
-                    <span id="spinner-val">0</span>  uso esto para tomar el value porque el del input no lo encuentra 
-                </p>   -->                            
+                <select name="levels" id="lvlSelect">
+                    <option value="-1" disabled selected hidden>Selecciona un nivel</option>
+                </select>                          
             </div>
             <div id="lvlButtonDiv">
-                <input type="button" id="jugar" value="¡Jugar!">
+                <input type="button" class="btn" id="jugar" value="¡Jugar!">
             </div>
         </div>
     </div>         
@@ -63,7 +62,7 @@
     <div id="rankingDiv" class="noDisplayRanking"> 
         <div id="rankingTitleDiv"></div> 
         <div id="rankingInfoDiv"></div> 
-        <div id="restartButtonDiv"><button id="restart">Reiniciar</button></div>        
+        <div id="restartButtonDiv"><button class="btn" id="restart">Reiniciar</button></div>        
     </div>
 
     <script src="js/jquery.js"></script>

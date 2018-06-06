@@ -6,21 +6,81 @@
 body{
     background-color: bisque ;
 }
-
 #welcomeDiv{
     width: 100%;
     height: 100%;
-    background-color: aliceblue;
+    background-color: bisque;
     z-index: 2; /*si lo dejo en 2 me aparecen las fichas*/
     position: absolute;
     text-align: center;
 }
-
+#welcomp{
+    font-family:'Chewy';
+    font-size:4em;
+    color: #9D2689;
+    margin-bottom: 0.5em;
+    animation-name: jackInTheBox; 
+}
 #welcomeInfo{
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width:30%;
+}
+#playerNameInput{
+    width: 60%;
+    border-radius: 2px;
+    border: 2px solid #ff8787;
+    font-size:1em;
+    text-transform: uppercase;
+    background-color: bisque;
+    color:#ff8787;
+    padding: 0.5em;
+}
+::placeholder {
+    color: #ff8787;
+}
+#levelDiv{
+    padding: 0.5em 0;
+}
+#lvlSelect{
+    width: 60%;
+    border-radius: 2px;
+    border: 2px solid #ff8787;
+    padding: 0.5em;
+    font-size:1em;
+    text-transform: uppercase;
+    background-color: bisque /* #495057*/;
+    color: #ff8787;
+}
+#levelOp {
+    color: #ff8787;
+    padding-top: 3px;
+    line-height: 1em;
+}
+#lvlSelect select option:not(:checked) { 
+    color:#ff8787;
+    margin: 1em 0;
+}
+.btn{
+    width: 60%;
+    background-color:  #ff8787;
+    border:  #ff8787;
+    color: white;
+    text-transform: uppercase;    
+    font-size: 1em;
+    padding: 0.6em 1em;
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+    box-shadow: none;
+}
+.btn:hover{
+    background-color:#f03e3e;
+}
+.btn,#lvlSelect select option:not(:checked),#levelOp,#lvlSelect,::placeholder,#playerNameInput,.rankingNames { 
+    font-family:'Tajawal';
+    font-weight:700;
 }
 .main{
     margin: 0 auto;
@@ -48,9 +108,14 @@ h1{
     font-size: 42px;
     color: #9D2689; 
 }
-.person, h3, .instr{
+.instr{
+    font-family:'Tajawal';
+    padding-left: 0.4em;
+    text-transform: uppercase;
+}
+.person, h3, #intentosP,#scoreP,.rankingTitle{
     font-family:'Sniglet';
-    color: #EB4B0F ; 
+    color: #f03e3e ; 
 }
 h3{
     font-size: 20px;
@@ -58,6 +123,10 @@ h3{
 }
 .person{
     font-size:30px;
+}
+#intentosP,#scoreP{
+    font-size: 25px;
+    margin: 5px;
 }
 #spinner-val{
     display: none;
@@ -89,7 +158,7 @@ h3{
     /*background: url(../img/dorso.png);*/
     background-size: 100%;
     width: 25%;
-    height: 25%;
+    height: auto;
     margin: 0.6em;
     border-radius:5px;
     box-shadow: darkgray 1px 1px 2px;
@@ -121,12 +190,34 @@ h3{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: aliceblue;
+    background: bisque;
+    text-align: center;
+    padding: 1.5em; 
+    box-shadow: gray 1px 3px 3px;
+}
+#rankingTitleDiv,#rankingInfoDiv,#restartButtonDiv{
+    text-align: center;
+}
+.rankingTitle{
+    font-size:2.2em;
+}
+.rankingUl, .rankingUl li {
+    text-decoration: none;
+    width: 60%;
+    margin: 0 auto;
+}
+.rankingScores{
+    font-family: 'Tajawal';
+    font-weight:500;
+}
+.rankingNames, .rankingScores{
+    display: inline-block;
+    margin: 0.5em;
+    font-size: 1.2em;
 }
 .noDisplayRanking{
     display: none;
 }
-
 /*   MEDIA QUERIES    */
 
 @media (max-width: 800px){
@@ -213,3 +304,37 @@ h3{
     }
 
 }
+
+/* animations kyframes*/
+
+@keyframes jackInTheBox {
+    from {
+      opacity: 0;
+      -webkit-transform: scale(0.1) rotate(30deg);
+      transform: scale(0.1) rotate(30deg);
+      -webkit-transform-origin: center bottom;
+      transform-origin: center bottom;
+    }
+  
+    50% {
+      -webkit-transform: rotate(-10deg);
+      transform: rotate(-10deg);
+    }
+  
+    70% {
+      -webkit-transform: rotate(3deg);
+      transform: rotate(3deg);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+  
+  .jackInTheBox {
+    -webkit-animation-name: jackInTheBox;
+    animation-name: jackInTheBox;
+  }
+  
