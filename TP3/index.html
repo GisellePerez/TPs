@@ -10,20 +10,23 @@
     <link rel="stylesheet" href="css/jquery-ui.min.css">
 </head>
 <body>
+    <div id="welcomeDiv">
+        <input type="text" id="playerNameInput" placeholder="Ingresa tu nombre">
+        <div id="levelDiv">
+            <p id="levelSpinner">
+                <label>Selecciona un nivel</label>
+                <input id="spinner" value="0" readonly /><br />
+                <span id="spinner-val">0</span> <!-- uso esto para tomar el value porque el del input no lo encuentra -->
+            </p>                               
+        </div>
+        <div id="lvlButtonDiv">
+            <input type="button" id="jugar" value="¡Jugar!">
+        </div>
+    </div>         
     <div class="main">
         <aside class="left">
             <h1>¡Memotest Ada!</h1>
             <div id="nameDiv"></div> 
-            <div id="levelDiv">
-                <p id="levelSpinner">
-                    <label>Selecciona un nivel</label>
-                    <input id="spinner" value="0" readonly /><br />
-                    <span id="spinner-val">0</span> <!-- uso esto para tomar el value porque el del input no lo encuentra -->
-                </p>
-                <div id="lvlButtonDiv">
-                    <input type="button" id="getlvl" value="¡Jugar!">
-                </div>
-            </div>
             <div class="instrucciones">
                 <h3>Instrucciones:</h3>
                 <p class="instr">1. Haz click en una ficha</p>
@@ -31,8 +34,7 @@
                 <p class="instr">3. Forma todos los pares en la menor cantidad de intentos</p>
                 <p class="instr">4. A disfrutar del juego!</p>               
             </div>  
-            <div id="infoJuego"><p id="intentosP"></p> <p id="scoreP"></p> </div>
-            <div id ="dialogRanking"></div> 
+            <div id="infoJuego"> <p id="intentosP"></p> <p id="scoreP"></p> </div> 
         </aside>
         <section class="right">
             <div class="fila">
@@ -54,11 +56,12 @@
                 <div class="ficha background" id="ficha12" data-par="6"></div>
             </div>
         </section>
-
-        <script src="js/jquery.js"></script>
-        <script src="js/jquery-ui.js"></script>
-        <script src="js/index.js"></script>
-        
     </div>
+    <div id="rankingDiv" class="noDisplayRanking"></div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/index4.js"></script>
+    
 </body>
 </html>
