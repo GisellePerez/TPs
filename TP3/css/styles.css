@@ -19,7 +19,6 @@ body{
     font-size:4em;
     color: #9D2689;
     margin-bottom: 0.5em;
-    animation-name: jackInTheBox; 
 }
 #welcomeInfo{
     position: relative;
@@ -62,6 +61,12 @@ body{
 #lvlSelect select option:not(:checked) { 
     color:#ff8787;
     margin: 1em 0;
+    display: block;
+}
+.oblig{
+    color: #cf0303;
+    display: block;
+    margin-top: 0.5em;
 }
 .btn{
     width: 60%;
@@ -78,7 +83,7 @@ body{
 .btn:hover{
     background-color:#f03e3e;
 }
-.btn,#lvlSelect select option:not(:checked),#levelOp,#lvlSelect,::placeholder,#playerNameInput,.rankingNames { 
+.btn,#lvlSelect select option:not(:checked),#levelOp,#lvlSelect,::placeholder,#playerNameInput,.rankingNames,.oblig { 
     font-family:'Tajawal';
     font-weight:700;
 }
@@ -127,9 +132,6 @@ h3{
 #intentosP,#scoreP{
     font-size: 25px;
     margin: 5px;
-}
-#spinner-val{
-    display: none;
 }
 .instrucciones{    
     margin:2em 1em;
@@ -227,11 +229,16 @@ h3{
 
     .main{
         width: 100%;
-        margin: 0;
+        padding: 0;
+    }
+
+    #scoreP,#intentosP{
+        display: inline;
+        margin: 0.5em;
     }
 
     .left{
-        width: 100%;      
+        width: 99%;      
     }
 
     .right{
@@ -261,7 +268,7 @@ h3{
     }
     
     .instrucciones p{
-        font-size:16px;
+        font-size:14px;
 
     }
 
@@ -272,69 +279,47 @@ h3{
 }
 
 
-@media (max-width: 500px){
-
+@media (max-width: 600px){
+    #welcomeInfo{
+        width: 100%;
+    }
+    #scoreP,#intentosP{
+        display: inline;
+        margin: 0.5em;
+        font-size: 20px;
+    }
     .main{
         flex-direction: column;
+        justify-content: flex-start;
+    }
+    .left{
+        width: 95%;
     }
 
-
     h1{
-        font-size: 60px;
+        font-size: 45px;
         margin:0em;
     }
 
     .person{
-        font-size:30px;
+        font-size:26px;
     }
-
-    .instrucciones{
-        margin:0 2em;
-    }
-
     #infoJuegoP{
         margin-top: 0.4em;
+    }
+    .displayRanking{
+        width: 90%;
+    }    
+    .rankingUl, .rankingUl li {
+        width: 80%;
     }
 }
 
 @media(max-width: 350px){
 
     h1{
-        font-size: 50px;
+        font-size: 40px;
     }
 
 }
 
-/* animations kyframes*/
-
-@keyframes jackInTheBox {
-    from {
-      opacity: 0;
-      -webkit-transform: scale(0.1) rotate(30deg);
-      transform: scale(0.1) rotate(30deg);
-      -webkit-transform-origin: center bottom;
-      transform-origin: center bottom;
-    }
-  
-    50% {
-      -webkit-transform: rotate(-10deg);
-      transform: rotate(-10deg);
-    }
-  
-    70% {
-      -webkit-transform: rotate(3deg);
-      transform: rotate(3deg);
-    }
-  
-    to {
-      opacity: 1;
-      -webkit-transform: scale(1);
-      transform: scale(1);
-    }
-  }
-  
-  .jackInTheBox {
-    -webkit-animation-name: jackInTheBox;
-    animation-name: jackInTheBox;
-  }
-  
