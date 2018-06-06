@@ -10,7 +10,7 @@ var fichas = [
 var arrayLevels =['Fácil','Intermedio','Experto'];
 
 var firstClick= null;
-var intentos=24;
+var intentos=0;
 var aciertos=0;
 var puntosIntentos;
 var cont=0;
@@ -20,6 +20,17 @@ var puntajeFinal=0;
 var puntaje=0;
 var lost=false; 
 var won =false;
+
+/*
+*   Funcion que carga las options para seleccionar el nivel
+*/
+
+function loadLvlOptions() {
+    for(var i=0 ; i<arrayLevels.length ; i++) {
+        var option = `<option class="levelOp" value="${arrayLevels[i]}">${arrayLevels[i]}</option>`; 
+        $('#lvlSelect').append(option);
+    }
+}
 
 /*
 *   Funcion para ingresar nombre
@@ -41,52 +52,9 @@ function getPlayerName(){
 }
 
 /*
-*  Spinner 
-*/
-
-$.widget("ui.textSpinner", $.ui.spinner, {
-    options: {
-        wrap: true
-    },
-    _parse: function (value) {
-        if ((value === '') || isNaN(value)) {
-            value = this.options.values.indexOf(value);
-            if (value === -1) {
-                value = 0;
-            }
-        }
-        if (value < 0) {
-            value = this.options.wrap ? (this.options.values.length -1) : 0;
-        } else if (value >= this.options.values.length) {
-            value = this.options.wrap ? 0 : (this.options.values.length - 1);
-        }
-        return value;
-    },
-    _format: function (value) {
-        return this.options.values[value];
-    },
-    _adjustValue: function (value) {
-        if (value < 0) {
-            value = this.options.wrap ? (this.options.values.length - 1) : 0;
-        } else if (value >= this.options.values.length) {
-            value = this.options.wrap ? 0 : (this.options.values.length - 1);
-        }
-        return value;
-    }
-}); 
-
-$(function() {
-    $("#spinner").textSpinner({
-        values: arrayLevels,
-        spin: function( event, ui ) {
-           $( "#spinner-val" ).text(ui.value);
-        }
-    });
-});
-
-/*
 *   Funcion que carga los intentos
 *   @ params | intentos
+*   return intentos
 */
 
 function displayMoves(intentos){
@@ -95,8 +63,11 @@ function displayMoves(intentos){
     div.append(p);
 }
 
+
 /*
-*   Funcion que carga los intentos
+*   Funcion que muestra los puntos
+*   @ | puntaje
+*   return puntaje
 */
 
 function displayScore(puntaje) {
@@ -198,8 +169,8 @@ function savePlayerData() {
 } 
 
 /*
- * Función que muestra la información alojada en el localStorage 
- */
+* Función que muestra la información alojada en el localStorage 
+*/
 
 function showPlayerData() {
     let datosGuardadosParse = JSON.parse(localStorage.getItem("players"));
@@ -226,17 +197,18 @@ function displayRanking(){
 
 $('#jugar').on('click', function(){
     $('#welcomeDiv').hide();
-    let level = ( $('#spinner-val').text() );
+    //let level = ( $('#spinner-val').text() );
+    let level = ($("#lvlSelect option:selected").val()); //también funciona con .text()
 
-    switch(level) {        
-        case '0'/*fácil*/: intentos = 18; break;        
-        case '1'/*Intermedio*/: intentos = 12; break;        
-        case '2'/*Experto*/: intentos = 8; break;        
-        default: 'No level';
+    switch(level) {
+        case 'Fácil': intentos = 18; break;        
+        case 'Intermedio': intentos = 12; break;        
+        case 'Experto': intentos = 8; break;        
+        default: 'No level';        
     }
     getPlayerName();
     displayMoves(intentos);
-      
+    displayScore(puntaje);      
 });
 
 $('.ficha').on('click', function(){
@@ -306,6 +278,7 @@ $('#restart').on('click', function(){
 *   Llamada a funciones
 */
 shuffle();
+loadLvlOptions();
 //localStorage.clear();
 
 

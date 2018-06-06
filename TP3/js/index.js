@@ -41,24 +41,19 @@ function getPlayerName(){
         div.append(welcome);
     }
 
-    /*
-    let name = prompt('Ingresa tu nombre', '');
-    if (name != null) {
-        let welcomePerson = `<p class="person">Bienvenida/o <span id = "playerName">${name}</span>!</p>`;
-        div.append(welcomePerson);        
-    }else{
-        let welcome = `<p class="person">Bienvenida/o!</p>`;
-        div.append(welcome);
-    }
-    playerName = $('#playerName').text(); 
-    console.log(playerName);
-    */
 }
 
+function loadLvlOptions() {
+    for(var i=0 ; i<arrayLevels.length ; i++){
+        var option = `<option value="${arrayLevels[i]}"></option>`; 
+        option.text(arrayLevels[i]);
+        $('#docType').append(option);
+    }
+}
 /*
 *  Spinner 
 */
-
+/*
 $.widget("ui.textSpinner", $.ui.spinner, {
     options: {
         wrap: true
@@ -98,6 +93,7 @@ $(function() {
         }
     });
 });
+*/
 
 /**
  * Listenner del boton para elegir el nivel
@@ -260,7 +256,7 @@ function displayRanking() {
 
     }
 }
-
+/*
 function checkWin() {
     if(won == true || lost == true ){
         console.log(playerName);
@@ -269,8 +265,7 @@ function checkWin() {
         //displayRanking();
         
     }
-}
-     
+} */    
 
 /*
 *   Listeners
