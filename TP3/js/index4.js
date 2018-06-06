@@ -153,9 +153,11 @@ function flip(firstClick, lastClick){
 */
 
 function victory(){
+    let victoryP = `<p class="rankingTitle"> Victory! </p>`;
     if(aciertos==6){
-        setTimeout(function(){ alert('VICTORY!'); }, 400); 
         won=true; //bandera
+        setTimeout(function(){ $('#rankingDiv').removeClass('noDisplayRanking'); $('#rankingDiv').addClass('displayRanking');      
+        $('.ficha').addClass('noPointer');$('#rankingDiv').append(victoryP); }, 400);         
     }
 }
 
@@ -164,9 +166,11 @@ function victory(){
 */
 
 function gameOver(){
+    let gameOverP = `<p class="rankingTitle"> Game over </p>`;
     if(intentos==0 && lost == false /*si no pongo el booleano funciona en todos los clicks*/){
-        setTimeout(function(){ alert('GAME OVER!'); }, 400); 
-        lost=true; //bandera        
+        lost=true; //bandera  
+        setTimeout(function(){ $('#rankingDiv').removeClass('noDisplayRanking'); $('#rankingDiv').addClass('displayRanking');
+        $('.ficha').addClass('noPointer'); $('#rankingDiv').append(gameOverP); }, 400);              
     }
 }
 
@@ -213,6 +217,10 @@ function showPlayerData() {
         //cambiar el display del div pop up y organizar la info
     }
 }
+
+/*function displayRanking(){
+    $('#rankingDiv').addClass('displayRanking');
+}*/
     
 /*
 *   Listeners
